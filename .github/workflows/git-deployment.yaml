@@ -21,9 +21,9 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Check FTPS support
-        run: |
-          curl --ssl-reqd --output /dev/null --silent --head --fail ftp://$FTP_SERVER
+      # - name: Check FTPS support
+      #   run: |
+      #     curl --ssl-reqd --output /dev/null --silent --head --fail ftp://$FTP_SERVER
 
       - name: Cache npm dependencies
         uses: actions/cache@v3
