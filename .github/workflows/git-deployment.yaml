@@ -1,0 +1,56 @@
+name: Gencio CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Build project
+        run: npm start
+
+      - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/main' && success()
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
+
+      - name: Notify deployment success
+        if: github.ref == 'refs/heads/main' && success()
+        run: echo "Deployment to Vercel was successful."
+
+      - name: Notify deployment failure
+        if: github.ref == 'refs/heads/main' && failure()
+        run: echo "Deployment to Vercel failed."

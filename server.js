@@ -1,12 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const express = require('express');
 const app = express();
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const bodyParser = require('body-parser');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-var-requires, no-undef
 const { Pool } = require('pg');
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 require('dotenv').config();
 
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
+// eslint-disable-next-line no-undef
 const PORT_NUMBER = process.env.PORT
 
 app.use(express.static('public'));
@@ -85,6 +90,7 @@ app.post('/submit', (req, res) => {
         msg_subject: req.body.msg_subject,
         message: req.body.message
     };
+    // eslint-disable-next-line no-undef
     pool.query('INSERT INTO contact_us (name, mail, phone_number, msg_subject, message) VALUES ($name, $email, $phone_number, $msg_subject, $message)', [data.name,data.mail,data.phone_number,data.msg_subject,data.message], (error) => {
         if (error) {
         console.error('Database insertion error:', error);
