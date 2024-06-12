@@ -1,4 +1,4 @@
-name: Gencio - Deploy to Vercel
+name: Deploy to cPanel
 
 on:
   push:
@@ -16,17 +16,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '14'
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Vercel Deployment
-        uses: amondnet/vercel-action@v20
+      # Assuming there is no actual build step, since this is an EJS application
+      # If you have static assets that need building, add the build step here
+      # - name: Build
+      #   run: npm run build
+
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
         with:
-          vercel-token: ${{ secrets.VERCEL_ACCESS_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          server: ${{ secrets.CPANEL_FTP_SERVER }}
+          username: ${{ secrets.CPANEL_FTP_USERNAME }}
+          password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          local-dir: .
+          server-dir: /public_html/gencio.co.uk
         env:
           CI: true
