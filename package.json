@@ -4,8 +4,7 @@
   "description": "Digital Agency",
   "main": "index.js",
   "scripts": {
-        "start": "node server.js"
-    
+    "start": "node server.js"
   },
   "keywords": [
     "Digital",
@@ -24,5 +23,4 @@
     "express": "^4.19.2",
     "pg": "^8.12.0"
   }
-  
 }
