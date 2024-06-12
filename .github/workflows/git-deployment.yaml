@@ -1,17 +1,17 @@
-name: 🚀 Deploy File to cPanel
+name: Deploy File to cPanel
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   FTP-Deploy-Action:
-    name: 🎉 Deploy
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🚚 Get latest code
+      - name: Get latest code
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
