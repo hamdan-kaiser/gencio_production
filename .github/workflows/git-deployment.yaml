@@ -1,56 +1,33 @@
-name: Gencio CI/CD Pipeline
+name: Gencio - Deploy to Vercel
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18, 20]
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  
 
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: npm install
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}-
+    - name: Build
+      run: npm start
 
-      - name: Install dependencies
-        run: npm i
-
-      - name: Build project
-        run: npm start
-
-      - name: Deploy to Vercel
-        if: github.ref == 'refs/heads/main' && success()
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          npm install -g vercel
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
-
-      - name: Notify deployment success
-        if: github.ref == 'refs/heads/main' && success()
-        run: echo "Deployment to Vercel was successful."
-
-      - name: Notify deployment failure
-        if: github.ref == 'refs/heads/main' && failure()
-        run: echo "Deployment to Vercel failed."
+    - name: Vercel Deployment
+      uses: amondnet/vercel-action@v20
+      with:
+        vercel-token: ${{ secrets.VERCEL_ACCESS_TOKEN }}  
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+      env:
+        CI: true
