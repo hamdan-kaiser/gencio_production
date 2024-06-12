@@ -1,0 +1,28 @@
+{
+  "name": "gencio",
+  "version": "1.1.1",
+  "description": "Digital Agency",
+  "main": "index.js",
+  "scripts": {
+        "start": "node server.js"
+    
+  },
+  "keywords": [
+    "Digital",
+    "Marketing",
+    "SEO",
+    "Web",
+    "Development",
+    "App",
+    "Development"
+  ],
+  "author": "Gencio",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+  
+}
