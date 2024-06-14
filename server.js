@@ -61,10 +61,6 @@ app.get("/blog", (req, res) => {
     res.render("blog-left-sidebar.ejs");
 });
 
-app.get("/not-found", (req, res) => {
-    res.render("404.ejs");
-});
-
 app.listen(PORT_NUMBER, "0.0.0.0", () => {
     console.log("listening to port ", { PORT_NUMBER });
 });
@@ -97,4 +93,8 @@ app.post("/submit", (req, res) => {
             res.send("Data Send successfully!");
         }
     );
+});
+
+app.use((req, res) => {
+    res.status(404).render('404.ejs');
 });
