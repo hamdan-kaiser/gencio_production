@@ -39,11 +39,11 @@ jobs:
           npm install
           git reset --hard
 
-      - name: 🔨 Cache Busting
-        run: |
+      #- name: 🔨 Cache Busting
+        #run: |
           # Example command to add version number or hash to file names
           # This assumes you have a script to handle cache busting
-          npm run cache-bust
+          #npm run cache-bust
 
       - name: 📂 Sync folders and files to the server
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
