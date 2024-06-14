@@ -2,27 +2,49 @@
     <!-- ***** Header Start ***** -->
     <header id="header">
         <!-- Navbar -->
-        <nav data-aos="zoom-out" data-aos-delay="800" class="navbar navbar-expand">
+        <nav
+            data-aos="zoom-out"
+            data-aos-delay="800"
+            class="navbar navbar-expand"
+        >
             <div class="container header">
                 <!-- Navbar Brand-->
                 <a class="navbar-brand" href="/">
-                    <img class="navbar-brand-regular" src="/img/logo/logo-white.png" alt="brand-logo">
-                    <img class="navbar-brand-sticky" src="/img/logo/logo.png" alt="sticky brand-logo">
+                    <img
+                        class="navbar-brand-regular"
+                        src="/img/logo/logo-white.png"
+                        alt="brand-logo"
+                    />
+                    <img
+                        class="navbar-brand-sticky"
+                        src="/img/logo/logo.png"
+                        alt="sticky brand-logo"
+                    />
                 </a>
                 <div class="ml-auto"></div>
 
-
-                
                 <!-- Navbar -->
                 <ul class="navbar-nav items">
                     <li class="nav-item">
-                        <a class="nav-link <%= page === 'home' ? 'active' : '' %>" href="/">Home</a>
+                        <a
+                            class="nav-link <%= page === 'home' ? 'active' : '' %>"
+                            href="/"
+                            >Home</a
+                        >
                     </li>
                     <li class="nav-item">
-                        <a href="/about" class="nav-link <%= page === 'about' ? 'active' : '' %>">About</a>
+                        <a
+                            href="/about"
+                            class="nav-link <%= page === 'about' ? 'active' : '' %>"
+                            >About</a
+                        >
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="/services" class="nav-link <%= page === 'services' ? 'active' : '' %>">Services</a>
+                        <a
+                            href="/services"
+                            class="nav-link <%= page === 'services' ? 'active' : '' %>"
+                            >Services</a
+                        >
                         <!-- <i class="fas fa-angle-down ml-1"></i> -->
                         <!-- <ul class="dropdown-menu">
                             <li class="nav-item"><a href="/services" class="nav-link">SEO and Optimisation</a></li>
@@ -83,18 +105,23 @@
                             <i class="fas fa-search"></i>
                         </a>
                     </li> -->
-                    <li class="nav-item social">
+                    <!-- <li class="nav-item social">
                         <a href="#" class="nav-link"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li class="nav-item social">
                         <a href="#" class="nav-link"><i class="fab fa-instagram"></i></a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <!-- Navbar Toggler -->
                 <ul class="navbar-nav toggle">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#menu">
+                        <a
+                            href="#"
+                            class="nav-link"
+                            data-toggle="modal"
+                            data-target="#menu"
+                        >
                             <i class="fas fa-bars toggle-icon m-0"></i>
                         </a>
                     </li>
@@ -103,7 +130,14 @@
                 <!-- Navbar Action Button -->
                 <ul class="navbar-nav action">
                     <li class="nav-item ml-3">
-                        <a href="/contact" class="btn ml-lg-auto btn-bordered-white"><i class="fas fa-paper-plane contact-icon mr-md-2"></i>Contact Us</a>
+                        <a
+                            href="/contact"
+                            class="btn ml-lg-auto btn-bordered-white"
+                            ><i
+                                class="fas fa-paper-plane contact-icon mr-md-2"
+                            ></i
+                            >Contact Us</a
+                        >
                     </li>
                 </ul>
             </div>
