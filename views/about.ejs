@@ -3,13 +3,18 @@
 <html class="no-js" lang="en">
     <body class="homepage-5 dark">
         <%- include('src/preloader.ejs') %>
-        <div class="main overflow-hidden dark-bg">
+        <div class="follower"></div>
+
             <%- include('src/navbar.ejs', { page: 'about' }) %>
 
             <!-- ***** Breadcrumb Area Start ***** -->
             <section
-                class="section breadcrumb-area overlay-dark d-flex align-items-center"
+                class="section breadcrumb-area bg-overlay overflow-hidden d-flex align-items-center"
             >
+            <video autoplay muted loop>
+                <source src="/video/about-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -20,26 +25,57 @@
                                 <h2 class="text-white text-uppercase mb-3">
                                     About Us
                                 </h2>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a
-                                            class="text-uppercase text-white"
-                                            href="/"
-                                            >Home</a
-                                        >
-                                    </li>
-                                    <li
-                                        class="breadcrumb-item text-white active"
-                                    >
-                                        About
-                                    </li>
-                                </ol>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- ***** Breadcrumb Area End ***** -->
+            <div id="app">
+                <div class="welcome-msg gloweffect">
+                    <h1>Welcome to the Future!</h1>
+                    <p>In the realm of IT services, we offer comprehensive solutions that ensure your technology infrastructure is robust, secure, and future-proof. Whether you need cloud computing solutions, cybersecurity enhancements, or IT consulting services, our team is committed to delivering excellence and exceeding your expectations. </p>
+                    <h2>We Are The Next Generation!</h2>
+                    <hr>
+                    <p>
+                        In digital marketing, we are your strategic partner in navigating the digital landscape. Our tailored campaigns leverage advanced SEO techniques, compelling content strategies, and precise audience targeting to boost visibility, engage customers, and maximize ROI. Whether you need to amplify brand awareness, drive traffic, or increase conversions, our digital experts deliver results-driven solutions.
+                        Partner with Gencio and step confidently into the future of technology-driven innovation. Let’s shape tomorrow together, today. Discover how our integrated IoT, digital marketing, and IT services can propel your business forward.
+                        
+                    </p>
+                    
+                    
+                </div>
+                <!-- BYE MESSAGE -->
+                <div class="goodbye-msg hidden gloweffect">
+                    <h1>You make your desition, no way back!</h1>
+                    <p>You are not welcome to the New era!, Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis aut commodi, libero facilis quisquam non, at cum, sed officiis esse inventore ab perferendis saepe! Temporibus numquam veniam voluptatem saepe voluptatum!</p>
+                    </div>
+                <!-- WEBSITE BEGIN -->
+                <div class="webpage hidden gloweffect">
+                    <nav class="p-2">
+                        <img src="#" alt="Back" class="left">
+                        <img src="#" alt="Logo" class="mx-auto">
+                        <img src="#" alt="Menu" class="right">
+                        
+                    </nav>
+                    <header>
+                        <div class="container">
+                            <div class="half-col">
+                            <img class="web-img" src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Header">
+                        </div>
+                        
+                            
+                        <div class="half-col">
+                            <h2>News</h2>
+                            <p>We are the resistance, we are the new govervemnt, we want faith and justice, pray for the ones that are figthing and be brave for the ones that already died!.</p>
+                        </div>
+                        </div>
+                    </header>
+                </div>
+            </div>
+
+
 
             <!-- ***** About Area Start ***** -->
             <section class="section about-area ptb_100">
@@ -158,6 +194,7 @@
                 </div>
             </section>
             <!-- ***** About Area End ***** -->
+
 
             <!-- ***** Our Goal Area Start ***** -->
             <section class="section our-goal ptb_100">
@@ -649,6 +686,8 @@
             </div>
             <!--====== Modal Responsive Menu Area End ======-->
         </div>
+        
+
 
         <!-- ***** All jQuery Plugins ***** -->
 
@@ -663,6 +702,9 @@
         <script src="/js/plugins/plugins.min.js"></script>
 
         <!-- Active js -->
+        
         <script src="/js/active.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+        
     </body>
 </html>
