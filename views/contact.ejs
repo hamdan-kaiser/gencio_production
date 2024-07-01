@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <%- include('src/header.ejs') %>
-    <body>
+    <body class="homepage-5 dark">
         <!--====== Preloader Area Start ======-->
         <%- include('src/preloader.ejs') %>
         <!--====== Preloader Area End ======-->
@@ -12,32 +12,22 @@
             <!-- ***** Header End ***** -->
             <!-- ***** Breadcrumb Area Start ***** -->
             <section
-                class="section breadcrumb-area overlay-dark d-flex align-items-center"
+                class="section breadcrumb-area bg-overlay overflow-hidden d-flex align-items-center"
             >
+                <video autoplay muted loop>
+                    <source src="/video/about-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <!-- Breamcrumb Content -->
-                            <div class="breadcrumb-content text-center">
+                            <div
+                                class="breadcrumb-content d-flex flex-column align-items-center text-center"
+                            >
                                 <h2 class="text-white text-uppercase mb-3">
-                                    Contact Us
+                                    Contact us
                                 </h2>
-                                <ol
-                                    class="breadcrumb d-flex justify-content-center"
-                                >
-                                    <li class="breadcrumb-item">
-                                        <a
-                                            class="text-uppercase text-white"
-                                            href="/"
-                                            >Home</a
-                                        >
-                                    </li>
-                                    <li
-                                        class="breadcrumb-item text-white active"
-                                    >
-                                        Contact
-                                    </li>
-                                </ol>
                             </div>
                         </div>
                     </div>
@@ -53,7 +43,7 @@
                             <!-- Section Heading -->
                             <div class="section-heading text-center mb-3">
                                 <h2 class="text-white">Let's connect!</h2>
-                                <p class="text-white-50  d-sm-block mt-4">
+                                <p class="text-white-50 d-sm-block mt-4">
                                     Reach out to us to start your journey
                                     towards digital success.
                                 </p>
@@ -78,7 +68,9 @@
                                             class="d-block my-2"
                                             href="tel:+44 01708 693277"
                                         >
-                                            <h3 class="text-white">+44 01708 693277</h3>
+                                            <h3 class="text-white">
+                                                +44 01708 693277
+                                            </h3>
                                         </a>
                                         <p class="text-white-50">
                                             Call us for immediate assistance and
@@ -98,13 +90,17 @@
                                             class="d-none d-sm-block my-2"
                                             href="mailto:info@gencio.co.uk"
                                         >
-                                            <h3 class="text-white">info@gencio.co.uk</h3>
+                                            <h3 class="text-white">
+                                                info@gencio.co.uk
+                                            </h3>
                                         </a>
                                         <a
                                             class="d-block d-sm-none my-2"
                                             href="mailto:info@gencio.co.uk"
                                         >
-                                            <h3 class="text-white">info@gencio.co.uk</h3>
+                                            <h3 class="text-white">
+                                                info@gencio.co.uk
+                                            </h3>
                                         </a>
                                         <p class="text-white-50">
                                             Email us for detailed inquiries and
@@ -292,5 +288,6 @@
 
         <!-- Active js -->
         <script src="/js/active.js"></script>
+        <script src="/js/animations.js"></script>
     </body>
 </html>

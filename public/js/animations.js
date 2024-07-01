@@ -17,7 +17,11 @@ gsap.utils.toArray(".all_title").forEach((all_title) => {
             skewX: 0,
             duration: 0.7,
             delay: 0.5,
-            scrollTrigger: all_title,
+            scrollTrigger: {
+                trigger: all_title,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+            },
         }
     );
 });
@@ -41,9 +45,12 @@ gsap.utils.toArray(".paragraph_lines").forEach((paragraph_lines) => {
         {
             text: originalText,
             opacity: 1,
-            duration: 4,
-            delay: 1,
-            scrollTrigger: paragraph_lines,
+            duration: 2,
+            scrollTrigger: {
+                trigger: paragraph_lines,
+                start: "top 80%",
+                toggleActions: "play none none reset",
+            },
         }
     );
 });
@@ -86,6 +93,36 @@ tl.to(".glitch", 0.1, { skewX: 70, ease: Power4.easeInOut })
     .to(".glitch", 0.02, { scaleY: 1.1, ease: Power4.easeInOut })
     .to(".glitch", 0.04, { scaleY: 1, ease: Power4.easeInOut });
 
+const tl2 = gsap.timeline({
+    defaults: {
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        ease: "power2.out",
+    },
+});
+tl2.from("#project-heading", {
+    scrollTrigger: {
+        trigger: "#project-heading",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+    },
+});
+tl2.from("#project", {
+    scrollTrigger: {
+        trigger: "#project",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+    },
+});
+tl2.from("#project2", {
+    scrollTrigger: {
+        trigger: "#project2",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+    },
+});
+
 //service page animation
 gsap.to("#rorate-svg", {
     rotation: 360,
@@ -119,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stagger: 0.3,
         scrollTrigger: {
             trigger: "#heading-h1-trigger",
-            start: "top center",
+            start: "top 80%",
             toggleActions: "play none none reset",
         },
     });
@@ -133,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stagger: 0.3,
         scrollTrigger: {
             trigger: "#heading-h1",
-            start: "top center", // start the animation when the top of the trigger hits 75% of the viewport height
+            start: "top 80%",
             toggleActions: "play none none reset",
         },
     });
@@ -146,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power1.out",
         scrollTrigger: {
             trigger: "#popup-sec-1",
-            start: "top center",
+            start: "top 80%",
             toggleActions: "play none none reset",
         },
     });
@@ -159,8 +196,56 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power1.out",
         scrollTrigger: {
             trigger: "#popup-sec-2",
-            start: "top center",
+            start: "top 80%",
             toggleActions: "play none none reset",
         },
     });
 });
+
+// Footer animation start
+let balls = document.querySelectorAll(".ball");
+balls.forEach(function (ball) {
+    let dx = Math.random() * 2 - 1; // Generate random value between -1 and 1 for horizontal direction
+    let dy = Math.random() * 2 - 1; // Generate random value between -1 and 1 for vertical direction
+    moveBall(ball, parseInt(ball.style.left), parseInt(ball.style.top), dx, dy);
+});
+
+function moveBall(ball, x, y, dx, dy) {
+    let speed = 2.4; // Set a fixed speed value
+
+    function changeDirectionIfNecessary(x, y) {
+        let rect = ball.getBoundingClientRect();
+        let canvasWidth =
+            document.querySelector(".rotating-canvas").offsetWidth;
+        let canvasHeight =
+            document.querySelector(".rotating-canvas").offsetHeight;
+        let overflow = 120; // Number of pixels allowed to go outside the canvas
+
+        if (x < -overflow || x > canvasWidth - rect.width + overflow) {
+            dx = -dx;
+        }
+        if (y < -overflow || y > canvasHeight - rect.height + overflow) {
+            dy = -dy;
+        }
+        return { dx, dy };
+    }
+
+    function draw() {
+        let rect = ball.getBoundingClientRect();
+
+        x += dx * speed; // Apply the speed
+        y += dy * speed; // Apply the speed
+
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
+
+        let directions = changeDirectionIfNecessary(x, y);
+        dx = directions.dx;
+        dy = directions.dy;
+
+        setTimeout(draw, 1000 / 60);
+    }
+
+    draw();
+}
+// Footer animation end
